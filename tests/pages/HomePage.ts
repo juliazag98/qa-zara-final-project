@@ -1,6 +1,6 @@
 import { expect, type Page, type Locator } from "@playwright/test";
 
-export class LanguagePage {
+export class HomePage {
   readonly page: Page;
   readonly languageSelect: Locator;
   readonly continueButton: Locator;
@@ -14,23 +14,18 @@ export class LanguagePage {
     this.menuButton = page.getByRole("button", { name: "Відкрити меню" });
   }
 
-  selectLanguage = async (value: string) => {
-    await this.languageSelect.selectOption(value);
-  };
+  async goToUa(): Promise<void> {
+    if (await this.languageSelect.isVisible().catch(() => false)) {
+      await this.languageSelect.selectOption("uk");
+      await this.continueButton.click();
+    } else {
+      await this.page.goto("/ua/uk/");
+    }
 
-  clickContinue = async () => {
-    await this.continueButton.click();
-  };
+    await expect(this.page).toHaveURL(/\/ua\//);
+  }
 
-  goToUaByLanguage = async () => {
-    await this.selectLanguage("uk");
-    await this.clickContinue();
-    await expect(this.page).toHaveURL(/\/ua\/?$/);
-  };
-
-  expectHomeLinkVisible = async () => {
+  async expectHomeLoaded(): Promise<void> {
     await expect(this.menuButton).toBeVisible();
-  };
-
-
+  }
 }

@@ -1,5 +1,5 @@
 import { test, expect } from "./fixtures/base.fixture";
-import { LanguagePage } from "./pages/HomePage";
+import { HomePage } from "./pages/HomePage";
 import { SearchComponent } from "./pages/SearchComponent";
 import { SearchResultPage } from "./pages/SearchResultPage";
 import { ProductPage } from "./pages/ProductPage";
@@ -7,11 +7,12 @@ import { AuthPage } from "./pages/AuthPage";
 import { invalidEmails } from "./data/invalidEmails";
 
 test("search and add to cart product", async ({
-  page,  acceptCookiesAndOpen,
+  page,
+  acceptCookiesAndOpen,
 }) => {
-  const languagePage = new LanguagePage(page);
-  await languagePage.goToUaByLanguage();
-  await languagePage.expectHomeLinkVisible();
+  const languagePage = new HomePage(page);
+  await languagePage.goToUa();
+  await languagePage.expectHomeLoaded();
 
   const searchPage = new SearchComponent(page);
   await searchPage.openSearch();
@@ -27,7 +28,7 @@ test("search and add to cart product", async ({
   await productPage.openCart();
   await productPage.expectCartPageOpened();
 
-   const auth = new AuthPage(page);
+  const auth = new AuthPage(page);
   await auth.openFromCart();
   await auth.expectAuthPageVisible();
 
@@ -43,10 +44,4 @@ test("search and add to cart product", async ({
       await emailInput.fill(""); // очищаємо для наступного кейса
     });
   }
-
-
 });
-
-
-
-
