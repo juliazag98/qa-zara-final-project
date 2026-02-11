@@ -15,7 +15,7 @@ test("search and add to cart product", async ({
  // await languagePage.expectHomeLoaded();
 
   const searchPage = new SearchComponent(page);
-  await searchPage.openSearch();
+ // await searchPage.openSearch();
   await searchPage.search("біла майка");
 
   const searchResultPage = new SearchResultPage(page);

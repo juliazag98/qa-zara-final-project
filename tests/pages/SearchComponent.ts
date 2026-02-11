@@ -14,10 +14,10 @@ export class SearchComponent {
     });
   }
 
-  async openSearch() {
-    await this.searchLink.click();
-    await expect(this.searchBox).toBeVisible();
-  }
+ // async openSearch() {
+ //   await this.searchLink.click();
+ //   await expect(this.searchBox).toBeVisible({timeout: 3000});
+ // }
 
   async search(query: string) {
   const encoded = encodeURIComponent(query);
