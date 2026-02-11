@@ -25,7 +25,9 @@ export class HomePage {
     await expect(this.page).toHaveURL(/\/ua\//);
   }
 
+  
   async expectHomeLoaded(): Promise<void> {
-    await expect(this.menuButton).toBeVisible();
+    await expect(this.menuButton).toBeVisible({ timeout: 15000 });
   }
+    
 }

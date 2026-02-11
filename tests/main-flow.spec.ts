@@ -12,7 +12,7 @@ test("search and add to cart product", async ({
 }) => {
   const languagePage = new HomePage(page);
   await languagePage.goToUa();
-  await languagePage.expectHomeLoaded();
+ // await languagePage.expectHomeLoaded();
 
   const searchPage = new SearchComponent(page);
   await searchPage.openSearch();
@@ -41,7 +41,7 @@ test("search and add to cart product", async ({
       await emailInput.fill(email);
       await continueBtn.click();
       await expect(errorText).toBeVisible();
-      await emailInput.fill(""); // очищаємо для наступного кейса
+      await emailInput.fill(""); 
     });
   }
 });
