@@ -22,6 +22,9 @@ export class SearchComponent {
   async search(query: string) {
   const encoded = encodeURIComponent(query);
   await this.page.goto(`/ua/uk/search?searchTerm=${encoded}&section=WOMAN`);
-  await expect(this.page.getByText(/UAH/i).first()).toBeVisible({ timeout: 15000 });
+  await expect(
+  this.page.locator('img[data-qa-qualifier="media-image"]').first()
+).toBeVisible({ timeout: 15000 });
+
 }
   }
