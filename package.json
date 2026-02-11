@@ -1,0 +1,22 @@
+{
+  "name": "qa-dojo-project",
+  "version": "1.0.0",
+  "description": "final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:chromium": "playwright test --project=chromium",
+    "test:chromium:headed": "playwright test --project=chromium --headed"
+  },
+  "keywords": [
+    "final_project"
+  ],
+  "author": "Yuliia Zahurska",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3"
+  }
+}
